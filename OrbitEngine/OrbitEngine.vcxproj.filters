@@ -39,4 +39,15 @@
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\bgfxRelease.lib" />
+    <Library Include="lib\bxRelease.lib" />
+    <Library Include="lib\bimgRelease.lib" />
+    <Library Include="lib\bimg_encodeRelease.lib" />
+    <Library Include="lib\bimg_decodeRelease.lib" />
+    <Library Include="lib\glfw3dll.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lib\glfw3.dll" />
+  </ItemGroup>
 </Project>

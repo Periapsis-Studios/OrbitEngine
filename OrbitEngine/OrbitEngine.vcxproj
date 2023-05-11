@@ -61,11 +61,16 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>ORBIT_BUILD_DLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y $(ProjectDir)lib\glfw3.dll $(OutputPath)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -75,13 +80,18 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>ORBIT_BUILD_DLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y $(ProjectDir)lib\glfw3.dll $(OutputPath)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\OrbitEngine\Renderer.h" />
@@ -93,6 +103,17 @@
   <ItemGroup>
     <ClCompile Include="src\OrbitEngine\Renderer.cpp" />
     <ClCompile Include="src\OrbitEngine\Renderer\Mesh.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\bgfxRelease.lib" />
+    <Library Include="lib\bimgRelease.lib" />
+    <Library Include="lib\bimg_decodeRelease.lib" />
+    <Library Include="lib\bimg_encodeRelease.lib" />
+    <Library Include="lib\bxRelease.lib" />
+    <Library Include="lib\glfw3dll.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lib\glfw3.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
